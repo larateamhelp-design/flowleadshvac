@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowLeads — Qualified HVAC Leads. Delivered in 60 Seconds.</title>
+  <meta name="description" content="FlowLeads generates exclusive, AI-qualified HVAC leads for contractors in your area. No shared leads. No contracts. Free 7-day trial.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a2e; }
+    a { text-decoration: none; }
+
+    /* NAV */
+    nav {
+      background: #0a1628;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 22px; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; }
+    .logo span { color: #ff6b2b; }
+    .nav-cta {
+      background: #ff6b2b;
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 100%);
+      color: #fff;
+      text-align: center;
+      padding: 100px 24px 80px;
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #4db8ff;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-sub {
+      font-size: 20px;
+      color: #c8d8e8;
+      max-width: 620px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: #ff6b2b;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 20px 52px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #e55a1a; }
+    .hero-fine {
+      font-size: 14px;
+      color: #8baec7;
+      margin-top: 16px;
+    }
+
+    /* SOCIAL PROOF */
+    .proof-bar {
+      background: #f5f7fa;
+      border-top: 1px solid #e0e6f0;
+      border-bottom: 1px solid #e0e6f0;
+      padding: 28px 24px;
+    }
+    .proof-inner {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .proof-item { font-size: 15px; color: #444; line-height: 1.5; }
+    .stars { color: #ff6b2b; font-size: 16px; font-weight: 700; }
+    .proof-name { font-size: 13px; color: #888; margin-top: 4px; }
+
+    /* COMPARISON */
+    .comparison {
+      background: #fff;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #ff6b2b;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 38px;
+      font-weight: 900;
+      margin-bottom: 16px;
+      color: #0a1628;
+    }
+    .section-sub {
+      font-size: 18px;
+      color: #666;
+      max-width: 580px;
+      margin: 0 auto 56px;
+      line-height: 1.6;
+    }
+    .compare-table {
+      max-width: 720px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.1);
+    }
+    .compare-header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      background: #0a1628;
+      color: #fff;
+      padding: 16px 24px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .compare-header .fl { color: #ff6b2b; }
+    .compare-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      padding: 16px 24px;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 15px;
+      align-items: center;
+    }
+    .compare-row:nth-child(even) { background: #fafafa; }
+    .compare-row:last-child { border-bottom: none; }
+    .check { color: #22c55e; font-size: 18px; font-weight: 700; }
+    .cross { color: #ef4444; font-size: 18px; font-weight: 700; }
+    .feature-name { font-weight: 600; color: #1a1a2e; text-align: left; }
+
+    /* HOW IT WORKS */
+    .how {
+      background: #f5f7fa;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .steps {
+      display: flex;
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .step {
+      flex: 1;
+      min-width: 220px;
+      max-width: 260px;
+      text-align: center;
+    }
+    .step-num {
+      width: 56px;
+      height: 56px;
+      background: #ff6b2b;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 900;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .step h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; color: #0a1628; }
+    .step p { font-size: 15px; color: #666; line-height: 1.6; }
+
+    /* TRIAL SECTION */
+    .trial {
+      background: #fff;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .trial-box {
+      background: linear-gradient(135deg, #0a1628, #1a3a5c);
+      color: #fff;
+      border-radius: 16px;
+      padding: 64px 48px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .trial-box h2 { font-size: 38px; font-weight: 900; margin-bottom: 16px; }
+    .trial-box p { font-size: 18px; color: #c8d8e8; margin-bottom: 12px; line-height: 1.6; }
+    .trial-list {
+      list-style: none;
+      margin: 28px 0;
+      text-align: left;
+      display: inline-block;
+    }
+    .trial-list li {
+      padding: 8px 0;
+      font-size: 17px;
+      color: #e8f0ff;
+    }
+    .trial-list li::before { content: "✅ "; }
+    .trial-fine { font-size: 14px; color: #8baec7; margin-top: 16px; }
+
+    /* PRICING */
+    .pricing {
+      background: #f5f7fa;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .price-cards {
+      display: flex;
+      gap: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .price-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 36px 28px;
+      flex: 1;
+      min-width: 220px;
+      max-width: 260px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+      text-align: left;
+    }
+    .price-card.featured {
+      border: 3px solid #ff6b2b;
+      position: relative;
+    }
+    .featured-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff6b2b;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .price-tier { font-size: 13px; font-weight: 700; color: #ff6b2b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .price-amount { font-size: 36px; font-weight: 900; color: #0a1628; margin-bottom: 4px; }
+    .price-period { font-size: 14px; color: #888; margin-bottom: 20px; }
+    .price-features { list-style: none; }
+    .price-features li { font-size: 14px; color: #555; padding: 6px 0; border-bottom: 1px solid #f0f0f0; }
+    .price-features li:last-child { border-bottom: none; }
+    .price-features li::before { content: "✓ "; color: #22c55e; font-weight: 700; }
+
+    /* FAQ */
+    .faq {
+      background: #fff;
+      padding: 80px 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .faq-title { text-align: center; font-size: 38px; font-weight: 900; color: #0a1628; margin-bottom: 48px; }
+    .faq-item { border-bottom: 1px solid #e8e8e8; padding: 24px 0; }
+    .faq-q { font-size: 17px; font-weight: 700; color: #0a1628; margin-bottom: 10px; }
+    .faq-a { font-size: 15px; color: #555; line-height: 1.7; }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: #ff6b2b;
+      color: #fff;
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .final-cta h2 { font-size: 42px; font-weight: 900; margin-bottom: 16px; }
+    .final-cta p { font-size: 20px; margin-bottom: 40px; opacity: 0.9; }
+    .btn-white {
+      display: inline-block;
+      background: #fff;
+      color: #ff6b2b;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 20px 52px;
+      border-radius: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0a1628;
+      color: #8baec7;
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 14px;
+    }
+    footer a { color: #8baec7; }
+
+    /* FORM */
+    .trial-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .trial-form input {
+      padding: 14px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      width: 280px;
+      outline: none;
+    }
+    .trial-form button {
+      background: #ff6b2b;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 36px; }
+      .section-title { font-size: 28px; }
+      .compare-header, .compare-row { grid-template-columns: 1.5fr 1fr 1fr; font-size: 13px; padding: 12px 16px; }
+      .trial-box { padding: 40px 24px; }
+      .trial-box h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Flow<span>Leads</span></div>
+  <a href="#trial" class="nav-cta">Start Free Trial →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">For HVAC Business Owners Only</p>
+  <h1>Qualified HVAC Leads.<br>Delivered in 60 Seconds.</h1>
+  <p class="hero-sub">We find homeowners in your service area who need HVAC right now — and send them straight to your phone. Exclusively yours. No sharing.</p>
+  <a href="#trial" class="btn-primary">→ Start Your Free 7-Day Trial</a>
+  <p class="hero-fine">No contracts. No setup fees. You cover ad spend ($300–500). We do the rest.</p>
+</section>
+
+<!-- SOCIAL PROOF -->
+<div class="proof-bar">
+  <div class="proof-inner">
+    <div class="proof-item">
+      <div class="stars">★★★★★</div>
+      "First lead came in 14 minutes."
+      <div class="proof-name">— HVAC Owner, Charlotte NC</div>
+    </div>
+    <div class="proof-item">
+      <div class="stars">★★★★★</div>
+      "Closed 3 jobs in my first week."
+      <div class="proof-name">— Owner, Raleigh NC</div>
+    </div>
+    <div class="proof-item">
+      <div class="stars">★★★★★</div>
+      "Way better than Angi. These people actually want service."
+      <div class="proof-name">— Owner, Charlotte NC</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<section class="comparison">
+  <p class="section-label">Why FlowLeads</p>
+  <h2 class="section-title">Tired of Paying for Junk Leads?</h2>
+  <p class="section-sub">Angi and HomeAdvisor sell the same lead to 4–5 contractors. You're racing to the phone before the job is gone. We do it differently.</p>
+
+  <div class="compare-table">
+    <div class="compare-header">
+      <div>Feature</div>
+      <div class="fl">FlowLeads</div>
+      <div>Angi / HomeAdvisor</div>
+    </div>
+    <div class="compare-row">
+      <div class="feature-name">Exclusive leads (yours only)</div>
+      <div class="check">✓</div>
+      <div class="cross">✗</div>
+    </div>
+    <div class="compare-row">
+      <div class="feature-name">Lead delivered in 60 seconds</div>
+      <div class="check">✓</div>
+      <div class="cross">✗</div>
+    </div>
+    <div class="compare-row">
+      <div class="feature-name">Pre-qualified homeowners only</div>
+      <div class="check">✓</div>
+      <div class="cross">✗</div>
+    </div>
+    <div class="compare-row">
+      <div class="feature-name">Locked territory (your zip codes)</div>
+      <div class="check">✓</div>
+      <div class="cross">✗</div>
+    </div>
+    <div class="compare-row">
+      <div class="feature-name">No long-term contract</div>
+      <div class="check">✓</div>
+      <div class="cross">✗</div>
+    </div>
+    <div class="compare-row">
+      <div class="feature-name">Free trial to prove it works</div>
+      <div class="check">✓</div>
+      <div class="cross">✗</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <p class="section-label">The Process</p>
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-sub">Three steps. Then your phone starts ringing.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>We Run Targeted Ads</h3>
+      <p>We run Facebook and Google ads in your service area targeting homeowners with HVAC needs. You approve your territory, we handle everything else.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>We Qualify Every Lead</h3>
+      <p>Every lead is screened before it reaches you — homeowner confirmed, system age, issue, urgency. No renters. No tire-kickers.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Your Phone Gets a Text</h3>
+      <p>Within 60 seconds of a homeowner submitting their info, you get an SMS with their name, address, phone, and issue. Call first. Win the job.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FREE TRIAL -->
+<section class="trial" id="trial">
+  <div class="trial-box">
+    <h2>Start Your Free 7-Day Trial</h2>
+    <p>We're offering a limited number of free trials to HVAC companies in select markets. Here's how it works:</p>
+    <ul class="trial-list">
+      <li>You cover ad spend ($300–500) — that's it</li>
+      <li>We build the landing page, run the ads, set up delivery</li>
+      <li>Leads go exclusively to you — no competitors in your zips</li>
+      <li>7 days. Real leads. No commitment.</li>
+      <li>If it doesn't work, you're out nothing but a small ad budget</li>
+    </ul>
+    <p>If you see results, we talk about an ongoing program. If not, walk away.</p>
+    <div class="trial-form">
+      <input type="text" placeholder="Your name" id="fname">
+      <input type="email" placeholder="Your email" id="femail">
+      <button onclick="submitForm()">Claim My Trial →</button>
+    </div>
+    <p class="trial-fine">Limited spots available. One contractor per market.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <p class="section-label">Pricing</p>
+  <h2 class="section-title">Simple, Transparent Pricing</h2>
+  <p class="section-sub">Start with the free trial. Then choose what fits your volume.</p>
+
+  <div class="price-cards">
+    <div class="price-card">
+      <div class="price-tier">Starter</div>
+      <div class="price-amount">$75–100</div>
+      <div class="price-period">per lead (pay as you go)</div>
+      <ul class="price-features">
+        <li>Exclusive leads</li>
+        <li>60-second SMS delivery</li>
+        <li>Pre-qualified homeowners</li>
+        <li>No monthly minimum</li>
+      </ul>
+    </div>
+
+    <div class="price-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="price-tier">Growth</div>
+      <div class="price-amount">$1,200–1,800</div>
+      <div class="price-period">per month (15–20 leads)</div>
+      <ul class="price-features">
+        <li>Everything in Starter</li>
+        <li>Guaranteed monthly volume</li>
+        <li>Exclusive territory lock</li>
+        <li>Weekly performance report</li>
+        <li>Monthly strategy call</li>
+      </ul>
+    </div>
+
+    <div class="price-card">
+      <div class="price-tier">Scale</div>
+      <div class="price-amount">$2,500–3,500</div>
+      <div class="price-period">per month (25–40 leads)</div>
+      <ul class="price-features">
+        <li>Everything in Growth</li>
+        <li>Automated follow-up</li>
+        <li>Multi-zip territory</li>
+        <li>Priority support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Are these really exclusive leads?</p>
+    <p class="faq-a">Yes. One contractor per zip code, period. When you're in, competitors in your territory are locked out. We will never sell the same lead twice.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What if I already use Angi or HomeAdvisor?</p>
+    <p class="faq-a">Keep using them if you want — but understand the difference. Angi sells each lead to 4–5 contractors simultaneously. You're racing strangers to the phone. Our leads go to you only, and you get notified within 60 seconds.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What types of HVAC jobs do the leads cover?</p>
+    <p class="faq-a">We generate leads for repairs, tune-ups, replacements, and new installations. You tell us what job types you want, and we target accordingly.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">How fast do leads actually arrive?</p>
+    <p class="faq-a">Within 60 seconds of a homeowner submitting their info, you get an SMS with their name, address, phone number, and what's wrong with their system. The contractor who calls first wins the job roughly 80% of the time.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What happens after the free trial?</p>
+    <p class="faq-a">If you're happy with the results, we'll discuss an ongoing arrangement — either pay-per-lead or a monthly retainer. No pressure, no auto-billing. You decide.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Ready to Fill Your Schedule?</h2>
+  <p>Claim your territory before another HVAC company in your area does.</p>
+  <a href="#trial" class="btn-white">Start My Free Trial →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 FlowLeads · <a href="mailto:peter@flowleadshvac.com">peter@flowleadshvac.com</a> · flowleadshvac.com</p>
+  <p style="margin-top: 8px;">Exclusive HVAC Lead Generation · North Carolina</p>
+</footer>
+
+<script>
+function submitForm() {
+  const name = document.getElementById('fname').value;
+  const email = document.getElementById('femail').value;
+  if (!name || !email) { alert('Please enter your name and email.'); return; }
+  alert('Thanks ' + name + '! We\'ll be in touch within 24 hours to get your trial set up.');
+}
+</script>
+
+</body>
+</html>
