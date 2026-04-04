@@ -130,7 +130,21 @@ nav { background: #0a1628; padding: 16px 32px; display: flex; justify-content: s
     <div class="icon">✅</div>
     <h2>You're on the list!</h2>
     <p>Peter will reach out to <strong id="successEmail"></strong> within a few hours to walk you through the setup and get your campaign live.</p>
-    <p style="margin-top:12px;color:#999;font-size:0.85rem">Questions? Email peter@flowleadshvac.com</p>
+    <p style="margin-top:12px;margin-bottom:0;font-weight:600;">Want to skip the wait? Book a call now:</p>
+  </div>
+</div>
+
+
+<div class="calendar-section" id="calendarSection" style="display:none;">
+  <div style="max-width:520px;margin:0 auto 40px;padding:0 20px;">
+    <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">📅 Pick a Time to Talk</h3>
+    <p style="color:#666;font-size:0.9rem;margin-bottom:16px;">Optional — book a 15-minute call with Peter to walk through your setup.</p>
+    <iframe 
+      src="https://api.leadconnectorhq.com/widget/booking/9qERd8GXEV3U9btZfHzD" 
+      style="width:100%;height:700px;border:none;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.08);"
+      frameborder="0"
+      scrolling="yes">
+    </iframe>
   </div>
 </div>
 
@@ -182,19 +196,7 @@ document.getElementById('trialForm').addEventListener('submit', async function(e
     source: 'FlowLeads Website - Trial Signup'
   };
 
-  // 2. Send notification email via Formspree
-  const formspreePayload = {
-    _replyto: data.email,
-    _subject: '🔔 NEW TRIAL SIGNUP — ' + data.companyName + ' (' + data.city + ')',
-    name: data.firstName + ' ' + data.lastName,
-    company: data.companyName,
-    email: data.email,
-    phone: data.phone,
-    city: data.city,
-    trucks: data.trucks || 'Not specified',
-    lead_source: data.currentLeadSource || 'Not specified',
-    notes: data.notes || 'None'
-  };
+  // 2. Send notification email via EmailJS
 
   try {
     await Promise.all([
@@ -207,10 +209,18 @@ document.getElementById('trialForm').addEventListener('submit', async function(e
         },
         body: JSON.stringify(ghlPayload)
       }),
-      fetch('https://formspree.io/f/peter@flowleadshvac.com', {
+      fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formspreePayload)
+        body: JSON.stringify({
+          access_key: '00000000-0000-0000-0000-000000000000',
+          subject: '🔔 NEW TRIAL SIGNUP — ' + data.companyName + ' (' + data.city + ')',
+          from_name: 'FlowLeads Trial Form',
+          to: 'peter@flowleadshvac.com',
+          name: data.firstName + ' ' + data.lastName,
+          email: data.email,
+          message: 'Company: ' + data.companyName + '\nPhone: ' + data.phone + '\nCity: ' + data.city + '\nTrucks: ' + (data.trucks || 'N/A') + '\nLead Source: ' + (data.currentLeadSource || 'N/A') + '\nNotes: ' + (data.notes || 'None')
+        })
       })
     ]);
   } catch (err) {
@@ -220,6 +230,8 @@ document.getElementById('trialForm').addEventListener('submit', async function(e
   document.getElementById('successEmail').textContent = data.email;
   document.getElementById('formSection').style.display = 'none';
   document.getElementById('successSection').style.display = 'block';
+  document.getElementById('calendarSection').style.display = 'block';
+  document.getElementById('calendarSection').scrollIntoView({behavior: 'smooth', block: 'start'});
 });
 </script>
 
