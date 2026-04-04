@@ -199,32 +199,21 @@ document.getElementById('trialForm').addEventListener('submit', async function(e
   // 2. Send notification email via EmailJS
 
   try {
-    await Promise.all([
-      fetch('https://services.leadconnectorhq.com/contacts/', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer pit-aa4ee3a6-d34d-40cd-987a-de6ed2782aa0',
-          'Version': '2021-07-28',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(ghlPayload)
-      }),
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: '00000000-0000-0000-0000-000000000000',
-          subject: '🔔 NEW TRIAL SIGNUP — ' + data.companyName + ' (' + data.city + ')',
-          from_name: 'FlowLeads Trial Form',
-          to: 'peter@flowleadshvac.com',
-          name: data.firstName + ' ' + data.lastName,
-          email: data.email,
-          message: 'Company: ' + data.companyName + '\nPhone: ' + data.phone + '\nCity: ' + data.city + '\nTrucks: ' + (data.trucks || 'N/A') + '\nLead Source: ' + (data.currentLeadSource || 'N/A') + '\nNotes: ' + (data.notes || 'None')
-        })
-      })
-    ]);
+    const ghlResponse = await fetch('https://services.leadconnectorhq.com/contacts/', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Authorization': 'Bearer pit-aa4ee3a6-d34d-40cd-987a-de6ed2782aa0',
+        'Version': '2021-07-28',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(ghlPayload)
+    });
+    const ghlResult = await ghlResponse.json().catch(() => ({}));
+    console.log('GHL contact created:', ghlResponse.status, ghlResult?.contact?.id || 'no id');
   } catch (err) {
-    console.error('Submission error:', err);
+    console.error('GHL submission error:', err);
   }
 
   document.getElementById('successEmail').textContent = data.email;
