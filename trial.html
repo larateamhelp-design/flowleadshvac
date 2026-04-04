@@ -168,47 +168,58 @@ document.getElementById('trialForm').addEventListener('submit', async function(e
 
   const data = Object.fromEntries(new FormData(this));
 
+  // 1. Add to GHL as contact
+  const ghlPayload = {
+    locationId: 'esjNWGHTWM8ZR7PyoAA1',
+    firstName: data.firstName,
+    lastName: data.lastName,
+    name: data.firstName + ' ' + data.lastName,
+    email: data.email,
+    phone: data.phone,
+    companyName: data.companyName,
+    city: data.city,
+    tags: ['trial-signup', 'website-lead'],
+    source: 'FlowLeads Website - Trial Signup'
+  };
+
+  // 2. Send notification email via Formspree
+  const formspreePayload = {
+    _replyto: data.email,
+    _subject: '🔔 NEW TRIAL SIGNUP — ' + data.companyName + ' (' + data.city + ')',
+    name: data.firstName + ' ' + data.lastName,
+    company: data.companyName,
+    email: data.email,
+    phone: data.phone,
+    city: data.city,
+    trucks: data.trucks || 'Not specified',
+    lead_source: data.currentLeadSource || 'Not specified',
+    notes: data.notes || 'None'
+  };
+
   try {
-    // Submit to GHL via API
-    const payload = {
-      locationId: 'esjNWGHTWM8ZR7PyoAA1',
-      firstName: data.firstName,
-      lastName: data.lastName,
-      name: data.firstName + ' ' + data.lastName,
-      email: data.email,
-      phone: data.phone,
-      companyName: data.companyName,
-      city: data.city,
-      tags: ['trial-signup', 'website-lead'],
-      customFields: [
-        { key: 'trucks', field_value: data.trucks || '' },
-        { key: 'current_lead_source', field_value: data.currentLeadSource || '' },
-        { key: 'notes', field_value: data.notes || '' }
-      ],
-      source: 'FlowLeads Website - Trial Signup'
-    };
-
-    const response = await fetch('https://services.leadconnectorhq.com/contacts/', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer pit-aa4ee3a6-d34d-40cd-987a-de6ed2782aa0',
-        'Version': '2021-07-28',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-
-    document.getElementById('successEmail').textContent = data.email;
-    document.getElementById('formSection').style.display = 'none';
-    document.getElementById('successSection').style.display = 'block';
-
+    await Promise.all([
+      fetch('https://services.leadconnectorhq.com/contacts/', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer pit-aa4ee3a6-d34d-40cd-987a-de6ed2782aa0',
+          'Version': '2021-07-28',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(ghlPayload)
+      }),
+      fetch('https://formspree.io/f/peter@flowleadshvac.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formspreePayload)
+      })
+    ]);
   } catch (err) {
-    // Even if API fails, show success and log
-    document.getElementById('successEmail').textContent = data.email;
-    document.getElementById('formSection').style.display = 'none';
-    document.getElementById('successSection').style.display = 'block';
     console.error('Submission error:', err);
   }
+
+  document.getElementById('successEmail').textContent = data.email;
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('successSection').style.display = 'block';
 });
 </script>
 
