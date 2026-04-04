@@ -140,6 +140,7 @@ nav { background: #0a1628; padding: 16px 32px; display: flex; justify-content: s
     <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">📅 Pick a Time to Talk</h3>
     <p style="color:#666;font-size:0.9rem;margin-bottom:16px;">Optional — book a 15-minute call with Peter to walk through your setup.</p>
     <iframe 
+      id="bookingCalendar"
       src="https://api.leadconnectorhq.com/widget/booking/9qERd8GXEV3U9btZfHzD" 
       style="width:100%;height:700px;border:none;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.08);"
       frameborder="0"
@@ -219,6 +220,15 @@ document.getElementById('trialForm').addEventListener('submit', async function(e
   document.getElementById('successEmail').textContent = data.email;
   document.getElementById('formSection').style.display = 'none';
   document.getElementById('successSection').style.display = 'block';
+  // Pre-fill calendar with form data
+  const calendarBase = 'https://api.leadconnectorhq.com/widget/booking/9qERd8GXEV3U9btZfHzD';
+  const calendarParams = new URLSearchParams({
+    first_name: data.firstName || '',
+    last_name: data.lastName || '',
+    email: data.email || '',
+    phone: data.phone || ''
+  });
+  document.getElementById('bookingCalendar').src = calendarBase + '?' + calendarParams.toString();
   document.getElementById('calendarSection').style.display = 'block';
   document.getElementById('calendarSection').scrollIntoView({behavior: 'smooth', block: 'start'});
 });
