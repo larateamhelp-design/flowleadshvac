@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Your Free Trial — FlowLeads</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f7fa; color: #1a1a2e; }
+.hero { background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 100%); color: white; padding: 50px 24px 40px; text-align: center; }
+.hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
+.hero h1 span { color: #ff6b2b; }
+.hero p { font-size: 1.05rem; opacity: 0.85; max-width: 500px; margin: 0 auto; }
+.form-wrap { max-width: 520px; margin: -28px auto 40px; background: white; border-radius: 16px; padding: 36px 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.12); position: relative; z-index: 10; }
+.form-wrap h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
+.form-wrap .sub { color: #666; font-size: 0.9rem; margin-bottom: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 16px; }
+label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 5px; color: #444; }
+input, select, textarea { width: 100%; padding: 11px 14px; border: 2px solid #e8e8e8; border-radius: 8px; font-size: 0.95rem; color: #1a1a2e; transition: border-color 0.2s; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: #ff6b2b; }
+textarea { resize: vertical; min-height: 80px; }
+.btn { width: 100%; padding: 15px; background: #ff6b2b; color: white; border: none; border-radius: 10px; font-size: 1.05rem; font-weight: 700; cursor: pointer; margin-top: 6px; transition: background 0.2s; }
+.btn:hover { background: #e55a1f; }
+.btn:disabled { background: #ccc; cursor: not-allowed; }
+.disclaimer { font-size: 0.75rem; color: #999; text-align: center; margin-top: 12px; }
+.what-happens { max-width: 520px; margin: 0 auto 40px; padding: 0 20px; }
+.what-happens h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+.step { display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start; }
+.step-num { background: #ff6b2b; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.step-text h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+.step-text p { font-size: 0.85rem; color: #666; }
+.success { display: none; text-align: center; padding: 40px 20px; }
+.success .icon { font-size: 3rem; margin-bottom: 16px; }
+.success h2 { font-size: 1.5rem; margin-bottom: 8px; }
+.success p { color: #666; font-size: 0.95rem; }
+nav { background: #0a1628; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 20px; font-weight: 900; color: #fff; }
+.logo span { color: #ff6b2b; }
+.back { color: #aaa; font-size: 0.9rem; }
+.back:hover { color: #fff; }
+@media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } .form-wrap { margin: -20px 12px 30px; padding: 24px 18px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Flow<span>Leads</span></div>
+  <a href="/" class="back">← Back to Home</a>
+</nav>
+
+<div class="hero">
+  <h1>Start Your <span>Free 7-Day Trial</span></h1>
+  <p>Fill out the form below and Peter will reach out within a few hours to get your campaign set up.</p>
+</div>
+
+<div class="form-wrap">
+  <div id="formSection">
+    <h2>Tell us about your business</h2>
+    <p class="sub">Takes 60 seconds. No payment required.</p>
+
+    <form id="trialForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" name="firstName" required placeholder="John">
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" name="lastName" required placeholder="Smith">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Company Name *</label>
+        <input type="text" name="companyName" required placeholder="Smith HVAC Services">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" name="phone" required placeholder="(704) 555-0000">
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" name="email" required placeholder="john@smithhvac.com">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Service Area City *</label>
+        <input type="text" name="city" required placeholder="Charlotte, NC">
+      </div>
+
+      <div class="form-group">
+        <label>How many trucks do you run?</label>
+        <select name="trucks">
+          <option value="">Select...</option>
+          <option value="1-2">1–2 trucks</option>
+          <option value="3-5">3–5 trucks</option>
+          <option value="6-10">6–10 trucks</option>
+          <option value="10+">10+ trucks</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Where do most of your leads come from today?</label>
+        <select name="currentLeadSource">
+          <option value="">Select...</option>
+          <option value="referrals">Referrals / word of mouth</option>
+          <option value="angi">Angi / HomeAdvisor</option>
+          <option value="google">Google Ads</option>
+          <option value="facebook">Facebook Ads</option>
+          <option value="mixed">Mix of sources</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Anything else we should know? (optional)</label>
+        <textarea name="notes" placeholder="Service area, specific goals, questions..."></textarea>
+      </div>
+
+      <button type="submit" class="btn" id="submitBtn">Request My Free Trial →</button>
+      <p class="disclaimer">No credit card. No contract. Peter will reach out personally to get you set up.</p>
+    </form>
+  </div>
+
+  <div class="success" id="successSection">
+    <div class="icon">✅</div>
+    <h2>You're on the list!</h2>
+    <p>Peter will reach out to <strong id="successEmail"></strong> within a few hours to walk you through the setup and get your campaign live.</p>
+    <p style="margin-top:12px;color:#999;font-size:0.85rem">Questions? Email peter@flowleadshvac.com</p>
+  </div>
+</div>
+
+<div class="what-happens">
+  <h3>What happens next:</h3>
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-text">
+      <h4>Peter reaches out</h4>
+      <p>You'll hear from Peter personally to confirm your service area and get everything set up.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-text">
+      <h4>We build your campaign</h4>
+      <p>Landing page, Facebook ads, lead delivery — all set up for your territory. You don't touch a thing.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-text">
+      <h4>Leads start coming in</h4>
+      <p>Qualified homeowners in your area, delivered directly to your phone. Exclusively yours.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('trialForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  const data = Object.fromEntries(new FormData(this));
+
+  try {
+    // Submit to GHL via API
+    const payload = {
+      locationId: 'esjNWGHTWM8ZR7PyoAA1',
+      firstName: data.firstName,
+      lastName: data.lastName,
+      name: data.firstName + ' ' + data.lastName,
+      email: data.email,
+      phone: data.phone,
+      companyName: data.companyName,
+      city: data.city,
+      tags: ['trial-signup', 'website-lead'],
+      customFields: [
+        { key: 'trucks', field_value: data.trucks || '' },
+        { key: 'current_lead_source', field_value: data.currentLeadSource || '' },
+        { key: 'notes', field_value: data.notes || '' }
+      ],
+      source: 'FlowLeads Website - Trial Signup'
+    };
+
+    const response = await fetch('https://services.leadconnectorhq.com/contacts/', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer pit-aa4ee3a6-d34d-40cd-987a-de6ed2782aa0',
+        'Version': '2021-07-28',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    document.getElementById('successEmail').textContent = data.email;
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('successSection').style.display = 'block';
+
+  } catch (err) {
+    // Even if API fails, show success and log
+    document.getElementById('successEmail').textContent = data.email;
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('successSection').style.display = 'block';
+    console.error('Submission error:', err);
+  }
+});
+</script>
+
+</body>
+</html>
