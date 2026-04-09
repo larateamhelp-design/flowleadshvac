@@ -212,7 +212,31 @@ document.getElementById('trialForm').addEventListener('submit', async function(e
       body: JSON.stringify(ghlPayload)
     });
     const ghlResult = await ghlResponse.json().catch(() => ({}));
-    console.log('GHL contact created:', ghlResponse.status, ghlResult?.contact?.id || 'no id');
+    const contactId = ghlResult?.contact?.id;
+    console.log('GHL contact created:', ghlResponse.status, contactId || 'no id');
+
+    // Add to pipeline as "New Signup"
+    if (contactId) {
+      await fetch('https://services.leadconnectorhq.com/opportunities/', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Authorization': 'Bearer pit-aa4ee3a6-d34d-40cd-987a-de6ed2782aa0',
+          'Version': '2021-07-28',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          locationId: 'esjNWGHTWM8ZR7PyoAA1',
+          pipelineId: 'nceGCq0TTIieSo2T8RdK',
+          pipelineStageId: '7cf13235-0b44-4dbc-a413-51157273c7dc',
+          contactId: contactId,
+          name: (data.companyName || 'Unknown') + ' — Trial Signup',
+          status: 'open',
+          monetaryValue: 1500
+        })
+      }).catch(err => console.error('Pipeline error:', err));
+      console.log('Added to pipeline');
+    }
   } catch (err) {
     console.error('GHL submission error:', err);
   }
