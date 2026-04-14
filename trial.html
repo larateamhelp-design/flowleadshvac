@@ -88,8 +88,12 @@ nav { background: #0a1628; padding: 16px 32px; display: flex; justify-content: s
       </div>
 
       <div class="form-group">
-        <label>Service Area City *</label>
-        <input type="text" name="city" required placeholder="Charlotte, NC">
+        <label>Primary Service Zip Codes * <span style="font-weight:400;color:#888">(up to 3)</span></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+          <input type="text" name="zip1" required placeholder="28202" maxlength="5" pattern="[0-9]{5}" style="text-align:center;font-size:1.1rem;letter-spacing:2px;">
+          <input type="text" name="zip2" placeholder="28203" maxlength="5" pattern="[0-9]{5}" style="text-align:center;font-size:1.1rem;letter-spacing:2px;">
+          <input type="text" name="zip3" placeholder="28204" maxlength="5" pattern="[0-9]{5}" style="text-align:center;font-size:1.1rem;letter-spacing:2px;">
+        </div>
       </div>
 
       <div class="form-group">
@@ -192,7 +196,7 @@ document.getElementById('trialForm').addEventListener('submit', async function(e
     email: data.email,
     phone: data.phone,
     companyName: data.companyName,
-    city: data.city,
+    city: [data.zip1, data.zip2, data.zip3].filter(Boolean).join(', '),
     tags: ['trial-signup', 'website-lead'],
     source: 'FlowLeads Website - Trial Signup'
   };
